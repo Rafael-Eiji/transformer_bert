@@ -1,0 +1,31 @@
+#!/bin/bash
+
+python train_mlm.py \
+    --config_name tokenizer/config.json \
+    --tokenizer_name tokenizer \
+    --train_file resources/corpus_train.txt \
+    --validation_file resources/corpus_dev.txt \
+    --output_dir output/from_scratch \
+    --overwrite_output_dir true \
+    --do_train \
+    --do_eval \
+    --do_predict \
+    --line_by_line \
+    --load_best_model_at_end \
+    --save_steps 500 \
+    --eval_steps 500 \
+    --evaluation_strategy steps \
+    --num_train_epochs 50 \
+    --per_device_train_batch_size 3 \
+    --per_device_eval_batch_size 2 \
+    --preprocessing_num_workers 4 \
+    --max_seq_length 256 \
+    --gradient_accumulation_steps 64 \
+    --adam_beta1 0.9 \
+    --adam_beta2 0.999 \
+    --adam_epsilon 0.000001 \
+    --learning_rate 0.0001 \
+    --weight_decay 0.01 \
+    --warmup_steps 10000 \
+    --max_train_samples 3000 \
+    --max_eval_samples 300 \
